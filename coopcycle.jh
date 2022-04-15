@@ -1,0 +1,79 @@
+
+entity Utilisateur {
+	idUser Integer
+    nom String
+    prenom String
+    adresse String
+    telephone String
+}
+
+entity Restaurant {
+	idRest Integer
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Course {
+	idCourse Integer
+    heure String
+    adresse String
+    prix Float
+}
+
+entity Commande {
+	idCommande Integer
+    nbProducts Integer
+    prix Float
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Produit {
+	idProd Integer
+    libelle String
+    quantite Integer
+}
+
+/**
+ * The Employee entity.
+ */
+entity Cooperative {
+	idCoop Integer
+}
+
+enum Language {
+    FRENCH, ENGLISH, DEUTSH, JAPAN, ITALIAN
+}
+
+relationship OneToMany {
+	Utilisateur{client} to Commande
+}
+relationship OneToMany {
+	Utilisateur{livre} to Course
+}
+
+relationship OneToOne {
+	Course{course} to Commande
+}
+
+relationship OneToMany {
+	Utilisateur{restaurateur} to Restaurant
+}
+
+relationship ManyToMany {
+	Utilisateur{livreur} to Cooperative
+}
+
+relationship OneToMany {
+	Commandes{compose} to Produit
+}
+
+relationship OneToMany {
+	Restaurant{besoin} to Produit
+}
+
+relationship OneToMany {
+	Utilisateur{appartient} to Cooperative
+}
