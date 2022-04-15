@@ -43,10 +43,6 @@ entity Cooperative {
 	idCoop Integer
 }
 
-enum Language {
-    FRENCH, ENGLISH, DEUTSH, JAPAN, ITALIAN
-}
-
 relationship OneToMany {
 	Utilisateur{client} to Commande
 }
@@ -62,12 +58,12 @@ relationship OneToMany {
 	Utilisateur{restaurateur} to Restaurant
 }
 
-relationship ManyToMany {
+relationship OneToMany {
 	Utilisateur{livreur} to Cooperative
 }
 
 relationship OneToMany {
-	Commandes{compose} to Produit
+	Commande{compose} to Produit
 }
 
 relationship OneToMany {
